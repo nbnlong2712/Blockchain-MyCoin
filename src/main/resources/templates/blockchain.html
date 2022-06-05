@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain</title>
+    <div th:replace="fragments/header :: header"></div>
+    <link rel="stylesheet" href="../static/styles/styles.css">
+</head>
+<body class="body">
+<div style="text-align: center">
+    <h1>BLOCK CHAIN</h1>
+</div>
+<div class="row">
+    <div class="col-lg-3" th:each="block : ${blockchain}">
+        <div class="card" id="block-chain">
+            <h1 style="text-align: center">Block</h1>
+            <p th:utext="${block.getPreviousHash()}"></p>
+            <p th:utext="${block.getNonce()}"></p>
+            <p th:utext="${block.getTimeStamp()}">Time stamp</p>
+            <p th:utext="${block.getTransactions()}"></p>
+            <p th:utext="${block.getHash()}"></p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

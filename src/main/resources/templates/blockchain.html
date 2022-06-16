@@ -16,11 +16,11 @@
     <div class="col-lg-3" th:each="block : ${blockchain}">
         <div class="card" id="block-chain">
             <h1 style="text-align: center">Block</h1>
-            <p th:utext="${block.getPreviousHash()}"></p>
-            <p th:utext="${block.getNonce()}"></p>
-            <p th:utext="${block.getTimeStamp()}">Time stamp</p>
-            <p th:utext="${block.getTransactions()}"></p>
-            <p th:utext="${block.getHash()}"></p>
+            <p th:utext="'Previous hash: ' + ${block.getPreviousHash()}"></p>
+            <p th:utext="'Timestamp: ' + ${block.getTimeStamp()}"></p>
+            <p th:utext="'Nonce: ' + ${block.getNonce()}"></p>
+            <p th:utext="'Transactions: ' + ${block.getTransactions()}"></p>
+            <p th:utext="'Hash: ' + ${block.getHash()}"></p>
         </div>
     </div>
 </div>

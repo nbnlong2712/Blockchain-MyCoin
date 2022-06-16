@@ -5,7 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/header2 :: header"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link th:href="@{styles/styles.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,15 +18,17 @@
     <div class="row">
         <div class="col-sm-6 offset-3 mt-4 mb-5">
             <h1 style="color: #f3bb2b; font-size: 70px; font-weight: bold">LOGIN</h1>
-            <form action="/login" method="post">
+            <form th:action="@{/}" th:object="${login}" method="post">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="inputUsername">
+                    <input type="text" th:field="*{username}" name="username" class="form-control" id="inputUsername">
                 </div>
                 <div class="form-group mt-3 mb-3">
                     <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword">
+                    <input type="password" th:field="*{password}" name="password" class="form-control"
+                           id="inputPassword">
                 </div>
+                <p style="color: red" th:text="${ERROR}"></p>
                 <button type="submit" class="btn btn-warning mt-3 mb-3">Submit</button>
             </form>
 

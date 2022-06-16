@@ -36,6 +36,6 @@ public class Transaction {
                 "from='" + from + '\'' +
                 ", to='" + to + '\'' +
                 ", amount=" + amount +
-                '}';
+                "}\n";
     }
 }

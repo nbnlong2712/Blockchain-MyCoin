@@ -8,6 +8,7 @@ public class Blockchain {
     private List<Transaction> pendingTransactions;
     private Integer proofOfWorkDifficulty;
 
+    //set - get
     public List<Block> getChain() {
         return chain;
     }
@@ -40,6 +41,7 @@ public class Blockchain {
         this.miningReward = miningReward;
     }
 
+    //constructor
     public Blockchain(Double miningReward, Integer proofOfWorkDifficulty) {
         this.miningReward = miningReward;
         this.proofOfWorkDifficulty = proofOfWorkDifficulty;
@@ -56,10 +58,8 @@ public class Blockchain {
         return chain.get(chain.size() - 1);
     }
 
-    public void addBlock(String minerAddress) {
+    public void mineBlock(String minerAddress) {
         Block lastBlock = this.lastBlock();
-        Transaction transaction = new Transaction(null, minerAddress, miningReward);
-        pendingTransactions.add(transaction);
 
         Block block = new Block(lastBlock.getHash(), new Date(), pendingTransactions);
         System.out.println("Start mining...");
@@ -69,6 +69,12 @@ public class Blockchain {
 
         chain.add(block);
         pendingTransactions = new ArrayList<>(Collections.emptyList());
+        Transaction transaction = new Transaction(null, minerAddress, miningReward);
+        pendingTransactions.add(transaction);
+    }
+
+    public void createTransaction(Transaction transaction) {
+        this.pendingTransactions.add(transaction);
     }
 
     public boolean isValidChain() {
@@ -83,10 +89,12 @@ public class Blockchain {
         return true;
     }
 
-    public void displayBlockChain()
-    {
-        for (Block block : chain)
-        {
+    public double getBalanceMoney(){
+        return 0;
+    }
+
+    public void displayBlockChain() {
+        for (Block block : chain) {
             System.out.println("{");
             System.out.println(" Previous Hash: " + block.getPreviousHash());
             System.out.println(" Timestamp: " + block.getTimeStamp());
@@ -95,12 +103,5 @@ public class Blockchain {
             System.out.println(" Hash: " + block.getHash());
             System.out.println("}");
         }
-    }
-
-    public static void main(String[] args) {
-        Blockchain blockchain = new Blockchain(10D, 5);
-        blockchain.addBlock("long");
-        blockchain.addBlock("nam");
-        blockchain.addBlock("thanh");
     }
 }

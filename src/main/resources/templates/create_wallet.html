@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Wallet</title>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/header2 :: header"></div>
 </head>
 <body>
 
@@ -13,14 +13,15 @@
     <div class="row">
         <div class="col-sm-6 offset-3 mt-4 mb-5">
             <h1 style="color: #f3bb2b; font-size: 70px; font-weight: bold">CREATE WALLET</h1>
-            <form action="/create-wallet" method="post">
+            <form th:action="@{/create-wallet}" th:object="${wallet}" method="post">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputUsername">Username</label>
-                    <input type="text" name="username" class="form-control" id="inputUsername">
+                    <input type="text" th:field="*{username}" name="username" class="form-control" id="inputUsername">
                 </div>
                 <div class="form-group mt-3 mb-3">
                     <label for="inputPassword">Password</label>
-                    <input type="password" name="password" class="form-control" id="inputPassword">
+                    <input type="password" th:field="*{password}" name="password" class="form-control"
+                           id="inputPassword">
                 </div>
                 <p style="color: red" th:text="${ERROR}"></p>
                 <button type="submit" class="btn btn-warning mt-3 mb-3">Submit</button>

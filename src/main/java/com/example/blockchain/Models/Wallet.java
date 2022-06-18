@@ -3,12 +3,7 @@ package com.example.blockchain.Models;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.security.*;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.util.Arrays;
-import java.util.Base64;
 
 @Entity
 @Table(name = "wallet")
@@ -110,13 +105,19 @@ public class Wallet {
     }
 
     //----------------------------------------------------------
-    public String convertKeyToHex(byte[] key)
-    {
-        StringBuilder sb = new StringBuilder();
-        for(byte b: key) {
-            sb.append(String.format("%02X", b));
+
+    public void getBalanceCoin(Blockchain blockchain) {
+        balance = 0;
+        for (Block block : blockchain.getChain()) {
+            for (Transaction transaction : block.getTransactions()) {
+                if (transaction.getFrom().equals(publicKey)) {
+                    balance -= transaction.getAmount();
+                }
+                if (transaction.getTo().equals(publicKey)) {
+                    balance += transaction.getAmount();
+                }
+            }
         }
-        return String.valueOf(sb);
     }
 
     @Override

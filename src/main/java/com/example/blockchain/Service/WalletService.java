@@ -23,4 +23,16 @@ public class WalletService {
         }
         return false;
     }
+
+    public static Wallet findByUsername(WalletRepository repository, String username) {
+        Wallet wallet = new Wallet();
+        List<Wallet> wallets = repository.findAll();
+        for (Wallet wallet1 : wallets) {
+            if (wallet1.getUsername().equals(username)) {
+                wallet = wallet1;
+                break;
+            }
+        }
+        return wallet;
+    }
 }

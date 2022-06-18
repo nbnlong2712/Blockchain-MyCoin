@@ -4,10 +4,12 @@ import com.google.common.annotations.Beta;
 import com.google.common.hash.Hashing;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.persistence.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Block {
+    private Integer id;
     private String hash;
     private String previousHash;
     private Long nonce;

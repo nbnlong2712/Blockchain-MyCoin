@@ -9,5 +9,34 @@
 </head>
 <body>
 
+<div class="container-xl mt-5 mb-5">
+    <div class="row">
+        <div class="col-sm-8 offset-3 mt-4 mb-5">
+            <h1 style="color: #f3bb2b; font-size: 70px; font-weight: bold">Transact</h1>
+            <form th:action="@{/transact}" th:object="${transaction}" method="post">
+                <div class="form-group mt-3 mb-3">
+                    <label for="inputFrom">From</label>
+                    <input readonly type="text" th:field="*{from}" name="from"
+                           class="form-control"
+                           id="inputFrom">
+                </div>
+                <div class="form-group mt-3 mb-3">
+                    <label for="inputTo">To</label>
+                    <input type="text" th:field="*{to}" name="to" class="form-control"
+                           id="inputTo">
+                </div>
+                <div class="form-group mt-3 mb-3">
+                    <label for="inputAmount">Amount</label>
+                    <input type="number" th:field="*{amount}" name="amount" class="form-control"
+                           id="inputAmount">
+                </div>
+                <p style="color: red" th:text="${ERROR}"></p>
+                <button type="submit" class="btn btn-warning mt-3 mb-3">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

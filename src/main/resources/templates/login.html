@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-sm-6 offset-3 mt-4 mb-5">
             <h1 style="color: #f3bb2b; font-size: 70px; font-weight: bold">LOGIN</h1>
-            <form th:action="@{/}" th:object="${login}" method="post">
+            <form th:action="@{/}" th:object="${loginWallet}" method="post">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputUsername">Username</label>
                     <input type="text" th:field="*{username}" name="username" class="form-control" id="inputUsername">

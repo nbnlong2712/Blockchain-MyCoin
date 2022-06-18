@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending transact</title>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+
+<div style="padding: 20px">
+    <h4 style="padding: 10px">
+        <span th:remove="tag">Number of Pending transactions: </span>
+        <small th:text="${pending_transaction}"></small>
+    </h4>
+    <button type="submit" th:onclick="|window.location.href='/mining'|" class="btn btn-warning mt-3 mb-3">Mine</button>
+</div>
+
+</body>
+</html>

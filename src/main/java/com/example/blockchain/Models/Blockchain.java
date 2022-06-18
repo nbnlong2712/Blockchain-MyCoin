@@ -50,7 +50,7 @@ public class Blockchain {
     }
 
     private Block genesisBlock() {
-        List<Transaction> transactions = new ArrayList<>(Collections.singletonList(new Transaction("", "", 0L)));
+        List<Transaction> transactions = new ArrayList<>(Collections.singletonList(new Transaction("[]", "66b77177b14d4685613c47d83935b763da2874b0014d0790bbb57c8073942a41", 100L)));
         return new Block("0000", new Date(), transactions);
     }
 
@@ -69,7 +69,7 @@ public class Blockchain {
 
         chain.add(block);
         pendingTransactions = new ArrayList<>(Collections.emptyList());
-        Transaction transaction = new Transaction(null, minerAddress, miningReward);
+        Transaction transaction = new Transaction("[]", minerAddress, miningReward);
         pendingTransactions.add(transaction);
     }
 
@@ -87,10 +87,6 @@ public class Blockchain {
                 return false;
         }
         return true;
-    }
-
-    public double getBalanceMoney(){
-        return 0;
     }
 
     public void displayBlockChain() {
